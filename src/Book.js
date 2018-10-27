@@ -1,22 +1,18 @@
 import MoveBook from './MoveBook'
 import React, { Component } from 'react'
 class Book extends Component {
-  state = {
-    
-  }
 
   render() {
-    console.log("chegou no book.render()")
     return (
 <div className="book">
   <div className="book-top">
-    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(`${this.props.book.imageLinks.smallThumbnail}`)' }}></div>
+    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url('+this.props.book.imageLinks.smallThumbnail+')' }}></div>
     <div className="book-shelf-changer">
-
+      <MoveBook book={this.props.book} />
     </div>
   </div>
-  <div className="book-title">To Kill a Mockingbird</div>
-  <div className="book-authors">Harper Lee</div>
+  <div className="book-title">{this.props.book.title}</div>
+  <div className="book-authors">{this.props.book.authors.join(' & ')}</div>
 </div>
     )
   }

@@ -3,15 +3,20 @@ import React, { Component } from 'react';
 import BookShelf from './BookShelf'
 import Search from './Search'
 import { Route } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends Component {
+
   state = {
-
+  	shelfBooks: []
   }
+// getAllBooks = () => ()
 
-  "wantToRead"
-  "read"
-  "currentlyReading"
+  	componentDidMount() {
+  		BooksAPI.getAll().then((books) => {
+  			this.setState({shelfBooks: books.filter(() => books.shelf === this.props.shelf)})
+  		})
+  	}
 
   render() {
     return (
@@ -22,9 +27,9 @@ class BooksApp extends Component {
             </div>
             <div className="list-books-content">
               <div>
-              <BookShelf shelf='currentlyReading' />
-              <BookShelf shelf='wantToRead' />
-              <BookShelf shelf='read' />
+              <BookShelf allBooks={this.state.shelfBooks} shelf='currentlyReading' />
+              <BookShelf allBooks={this.state.shelfBooks} shelf='wantToRead' />
+              <BookShelf allBooks={this.state.shelfBooks} shelf='read' />
               </div>
             </div>
             	//TODO: arrumar pra que o botão passe pra URL (React Router) do search

@@ -4,10 +4,6 @@ import React, { Component } from 'react'
 //TODO: Fazer a função pra filtrar os livros e retornar um componente Book pra cada resultado
 class Search extends Component {
 
-  state = {
-    
-  }
-
   render() {
     return (
      <div className="search-books">
