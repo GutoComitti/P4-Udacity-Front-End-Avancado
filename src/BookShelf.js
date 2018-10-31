@@ -18,6 +18,8 @@ class BookShelf extends Component {
   		default: 
   			shelfType = "Invalid Shelf Type!!";
   	};
+  	// Code to test which book is in which shelf
+  	// this.props.allBooks.map((book)=>{console.log(`${book.title} está na prateleira ${book.shelf}`)});
 
     return (
 	  <div className="bookshelf">
@@ -26,7 +28,7 @@ class BookShelf extends Component {
 	      <ol className="books-grid">
 	      {this.props.allBooks.filter((book) => (book.shelf === this.props.shelf)).map((elemBook) => (
 	      	<li>
-	        <Book book={elemBook} key={elemBook.id}/>
+	        <Book allBooks={this.props.allBooks} updateBook={this.props.updateBook} book={elemBook} key={elemBook.id}/>
 	        </li>
 	      	))}
 		  </ol>
