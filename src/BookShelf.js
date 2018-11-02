@@ -18,7 +18,7 @@ class BookShelf extends Component {
   		default: 
   			shelfType = "Invalid Shelf Type!!";
   	};
-  	// Code to test which book is in which shelf
+  	// Linha pra testar qual livro está em qual prateleira
   	// this.props.allBooks.map((book)=>{console.log(`${book.title} está na prateleira ${book.shelf}`)});
 
     return (
