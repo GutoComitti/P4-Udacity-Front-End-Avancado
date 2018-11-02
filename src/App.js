@@ -21,20 +21,21 @@ class BooksApp extends Component {
   	}
 
 	updateBook = (book, shelf) =>{
-		BooksAPI.get(book.id).then((updatedBook) =>{
-			updatedBook.shelf = shelf;
-			this.setState((prevState) => {
-		  		//If the book wasn't in the array (any shelf), it includes the book in the array
-	  			if (!this.state.allBooks.includes(book)){
-	  				prevState.allBooks.push(book);
-	  			}else{
-	  			//else, it just updates the state.
-					prevState.allBooks.forEach((shelfsBook) => {if(shelfsBook.id === book.id){shelfsBook = updatedBook}});
-	  			}
-		  		return {allBooks: prevState.allBooks}
-	  		})
-		})
-
+		book.shelf = shelf;
+		this.setState((prevState) => {
+	  		//If the book wasn't in the array (any shelf), it includes the book in the array
+  			if (!this.state.allBooks.includes(book)){
+  				prevState.allBooks.push(book);
+  			}else{
+  			//else, it just updates the state.
+				prevState.allBooks.forEach((shelfsBook) => {
+					if(shelfsBook.id === book.id){
+						shelfsBook = book
+					}
+				});
+  			}
+	  		return {allBooks: prevState.allBooks}
+  		})
 	}
 
   	componentDidMount() {
@@ -63,9 +64,21 @@ class BooksApp extends Component {
 		            			<h1>MyReads</h1>
 		            		</div>
 		            		<div className="list-books-content">
-					            <BookShelf allBooks={this.state.allBooks} updateBook={this.updateBook} shelf='currentlyReading' />
-					            <BookShelf allBooks={this.state.allBooks} updateBook={this.updateBook} shelf='wantToRead' />
-					            <BookShelf allBooks={this.state.allBooks} updateBook={this.updateBook} shelf='read' />
+					            <BookShelf 
+					            allBooks={this.state.allBooks} 
+					            updateBook={this.updateBook} 
+					            shelf='currentlyReading' 
+					            />
+					            <BookShelf 
+					            allBooks={this.state.allBooks} 
+					            updateBook={this.updateBook} 
+					            shelf='wantToRead' 
+					            />
+					            <BookShelf 
+					            allBooks={this.state.allBooks} 
+					            updateBook={this.updateBook} 
+					            shelf='read' 
+					            />
 		            		</div>
 		            		<div className="open-search">
 		            			<Link to="/search">Add a book</Link>
