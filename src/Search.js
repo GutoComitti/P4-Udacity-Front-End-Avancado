@@ -1,8 +1,7 @@
 import Book from './Book'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-//TODO: Fazer o input estar ligado ao estado, e a cada novo caractere inserido re-renderizar a página com os livros filtrados
-//TODO: Fazer a função pra filtrar os livros e retornar um componente Book pra cada resultado
+
 class Search extends Component {
 
   render() {
