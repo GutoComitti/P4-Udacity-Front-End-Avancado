@@ -38,14 +38,13 @@ class BooksApp extends Component {
   		})
 	}
 
-  	componentDidMount() {
-  		BooksAPI.getAll().then((books) => {
-  			this.setState({allBooks: books})
-  		})
-  	}
+
+	async componentDidMount() {
+		const books = await BooksAPI.getAll();
+		this.setState({ allBooks: books });
+	}
 
 	render() {
-		console.log(this.state.allBooks);
 		if (this.state.query){
 			BooksAPI.search(this.state.query).then((books) =>{
 				if (books.length > 0){
