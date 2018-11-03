@@ -4,6 +4,8 @@ import Book from './Book'
 class BookShelf extends Component {
 
 	render() {
+
+
   		let shelfType = '';
   		switch(this.props.shelf){
 	  		case "wantToRead":
@@ -28,12 +30,12 @@ class BookShelf extends Component {
 					<ol className="books-grid">
 						{this.props.allBooks.filter((book) => 
 							(book.shelf === this.props.shelf)).map((elemBook) => (
-								<li>
+								<li key={elemBook.id}>
 									<Book 
 									allBooks={this.props.allBooks} 
 									updateBook={this.props.updateBook} 
 									book={elemBook} 
-									key={elemBook.id}/>
+									/>
 								</li>
 						))}
 					</ol>

@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 class Book extends Component {
 
   render() {
+
+
+    console.log('tá atualizando book');
+
     return (
 <div className="book">
   <div className="book-top">
@@ -11,7 +15,7 @@ class Book extends Component {
   )}
   {(!this.props.book.imageLinks || !this.props.book.imageLinks.smallThumbnail) && (
     <div className="book-cover" 
-    style={{ width: 128, height: 193, 'border-style': 'solid', 'border-width': '1px', 'text-align': 'center'}}>
+    style={{ width: 128, height: 193, 'borderStyle': 'solid', 'borderWidth': '1px', 'textAlign': 'center'}}>
     UNAVAILABLE COVER</div>
     )}
     
@@ -24,7 +28,9 @@ class Book extends Component {
     </div>
   </div>
   <div className="book-title">{this.props.book.title}</div>
+  {(this.props.book && this.props.book.authors) &&(
   <div className="book-authors">{this.props.book.authors.join(' & ')}</div>
+    )}
 </div>
     )
   }

@@ -20,8 +20,8 @@ class Search extends Component {
       <div className="search-books-results">
         <ol className="books-grid">
           {this.props.showingBooks.map((book) => (
-          <li>
-            <Book allBooks={this.props.allBooks} updateBook={this.props.updateBook} book={book} key={book.id}/>
+          <li key={book.id}>
+            <Book allBooks={this.props.allBooks} updateBook={this.props.updateBook} book={book}/>
           </li>
           ))}
         </ol>

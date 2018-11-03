@@ -21,7 +21,11 @@ class BooksApp extends Component {
   	}
 
 	updateBook = (book, shelf) =>{
-		book.shelf = shelf;
+		if (shelf === 'none'){
+			delete book.shelf;
+		}else{
+			book.shelf = shelf;			
+		}
 		this.setState((prevState) => {
 	  		//If the book wasn't in the array (any shelf), it includes the book in the array
   			if (!this.state.allBooks.includes(book)){
@@ -45,6 +49,9 @@ class BooksApp extends Component {
 	}
 
 	render() {
+
+		console.log('tá atualizando app');
+
 		if (this.state.query){
 			BooksAPI.search(this.state.query).then((books) =>{
 				if (books.length > 0){
